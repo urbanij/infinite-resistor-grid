@@ -43,5 +43,5 @@ print i(v1)
 ```
 
 ### How to:
-rustc process.rs
-python run.py # it takes ~40 seconds or so with current configuration
+rustc process.rs -C opt-level=3
+python run.py # it takes ~20 seconds or so with current configuration
