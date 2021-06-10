@@ -1,0 +1,13 @@
+* SImple voltage calc
+
+V1 0 1 dc 10V
+R1 1 0 5k
+
+.control
+op
+print all
+.endc
+
+* ngspice 33 -> simple_resistor.cir
+* ngspice 33 -> op
+* ngspice 33 -> print i(v1)
