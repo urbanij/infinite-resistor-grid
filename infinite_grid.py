@@ -19,31 +19,41 @@ if N % 2 != 0: raise("Give me an even number")
 M = N + 1
 
 
-out = f"* Infinite grid of resistors, N = {N}, M = {M}\n"
+out = f"* Infinite grid of resistors, N = {N}, M = {M}\n\n"
 
-# put horizontal resistors in place
 resistor_number = 0
 
+# put horizontal resistors in place
+out += "* Horizontal resistors\n"
 for i in range(N*M - 1):
     if (i+1) % M == 0:
-        continue
+        # continue
+        out += "* ---\n"
     else:
-        out += f"R{resistor_number} {i} {i+1} 1.0\n"
+        out += f"R{resistor_number} {i} {i+1} 1\n" # 1 means 1 Ohm
         resistor_number += 1
 
 # put vertical resistors in place
-for i in range(N*M - 1):
-    if (i+1) % N == 0:
-        continue
-    else:
-        out += f"R{resistor_number} {i} {i+M} 1.0\n"
-        resistor_number += 1
+out += "* Vertical resistors\n"
+for i in range(N*(M-1) - 1):
+    if i % M == 0:
+        out += "* ---\n"
+    out += f"R{resistor_number} {i} {i+M} 1\n" # 1 means 1 Ohm
+    resistor_number += 1
 
 
-Vx = 11
-Vy = 8
+V_pos_row, V_pos_col = N//2,     N//2 - 1
+V_neg_row, V_neg_col = N//2 - 1, N//2 + 1
 
-out += f"\nV1 {Vx} {Vy} dc 1V\n"
+# print(V_pos_row, V_pos_col)
+# print(V_neg_row, V_neg_col)
+
+V_pos = (V_pos_row) * M + V_pos_col
+V_neg = (V_neg_row) * M + V_neg_col
+
+# print(V_pos, V_neg)
+
+out += f"\nV1 {V_pos} {V_neg} dc 1V\n"
 
 out += """
 .control
@@ -58,8 +68,13 @@ out += f"* Grid size = {N} * {M}\n"
 out += f"* # resistors = {resistor_number}\n"
 
 
+# since in SPICE 0 is ground we need to do a trick:
+# out = out.replace(' 0 ', f" {N*M} ")
+# out = out.replace(f" {V_neg} ", ' 0 ')
+
+
 assert resistor_number == ( (N-1) * M + (M-1) * N )
 
 with open("infinite_grid.cir", "w") as f: f.write(out)
 
-print(out)
+# print(out)
