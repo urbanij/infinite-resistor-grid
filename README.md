@@ -6,11 +6,11 @@
 
 ## How to:
 
-Install ngspice<sup>1</sup> or any other SPICE<sup>2</sup> simulator for that matter, e.g.
+Install [ngspice](http://ngspice.sourceforge.net/) or any other [SPICE](https://en.wikipedia.org/wiki/List_of_free_electronics_circuit_simulators) simulator for that matter, e.g.
 ```
 brew install ngspice
 ```
-then compile this little script in Rust<sup>2</sup> that _parses_ ngspice outputs
+then compile this little script in [Rust](https://www.rust-lang.org/tools/install) that _parses_ ngspice outputs
 ```bash
 rustc process.rs -C opt-level=3
 ```
@@ -19,7 +19,7 @@ then run it all with this python script which takes ~20 seconds or so with the c
 ```bash
 python run.py
 ```
-If everything was a success you should have 2 `.svg` plots in your current directory.
+If everything was a success you should have two `.svg` plots in your current directory.
 
 If you want to get straight to a single figure you can just run this instead, passing a moderately big even number like 170
 
@@ -59,8 +59,3 @@ print i(v1)
 * print all
 .endc
 ``` -->
-
----
-1 http://ngspice.sourceforge.net/ <br>
-2 https://en.wikipedia.org/wiki/List_of_free_electronics_circuit_simulators <br>
-3 https://www.rust-lang.org/tools/install
