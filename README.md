@@ -41,3 +41,7 @@ print i(v1)
 -1.29290e+00
 -1.29292e+00
 ```
+
+### How to:
+rustc process.rs
+python run.py # it takes ~40 seconds or so with current configuration
