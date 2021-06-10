@@ -64,13 +64,13 @@ print i(v1)
 \n"""
 
 # add some commentary at the end of the file
-out += f"* Grid size = {N} * {M}\n"
+out += f"* Grid size = {N}x{M}\n"
 out += f"* # resistors = {resistor_number}\n"
 
 
 # since in SPICE 0 is ground we need to do a trick:
-# out = out.replace(' 0 ', f" {N*M} ")
-# out = out.replace(f" {V_neg} ", ' 0 ')
+out = out.replace(' 0 ', f" {N*M} ")
+out = out.replace(f" {V_neg} ", ' 0 ')
 
 
 assert resistor_number == ( (N-1) * M + (M-1) * N )
