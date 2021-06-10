@@ -19,7 +19,10 @@ if N % 2 != 0: raise("Give me an even number")
 M = N + 1
 
 
-out = f"* Infinite grid of resistors, N = {N}, M = {M}\n\n"
+out = f"* Infinite grid of resistors"
+out += f"* Grid size = {N}x{M}; "
+out += f"# resistors = { ( (N-1) * M + (M-1) * N ) }\n\n"
+
 
 resistor_number = 0
 
@@ -62,10 +65,6 @@ print i(v1)
 * print all
 .endc
 \n"""
-
-# add some commentary at the end of the file
-out += f"* Grid size = {N}x{M}\n"
-out += f"* # resistors = {resistor_number}\n"
 
 
 # since in SPICE 0 is ground we need to do a trick:
