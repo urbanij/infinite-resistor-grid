@@ -1,1 +1,0 @@
-python infinite_grid.py 4 | ngspice

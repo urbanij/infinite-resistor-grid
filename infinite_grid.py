@@ -76,4 +76,4 @@ assert resistor_number == ( (N-1) * M + (M-1) * N )
 
 with open("infinite_grid.cir", "w") as f: f.write(out)
 
-# print(out)
+print(out)
