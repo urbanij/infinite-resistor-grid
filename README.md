@@ -12,10 +12,10 @@ brew install ngspice
 ```
 then compile this little script in [Rust](https://www.rust-lang.org/tools/install) that _parses_ ngspice outputs
 ```bash
-rustc process.rs -C opt-level=3
+rustc parse_ngspice_output.rs
 ```
 
-then run it all with this python script which takes ~20 seconds or so with the current configuration
+then run it all with this python script which takes ~40 seconds or so with the current configuration
 ```bash
 python run.py
 ```
@@ -31,7 +31,7 @@ which, after processing a netlist of 57799 resistors, gives a `i(v1) = -1.29310e
 `0.77333539556 Ω`.
 
 
-![](https://github.com/urbanij/infinite-resistor-grid/blob/main/resistors_vs_resistance.svg?raw=true)
+![](https://github.com/urbanij/infinite-resistor-grid/blob/main/#_resistors_vs_resistance.svg?raw=true)
 
 
 <!-- 

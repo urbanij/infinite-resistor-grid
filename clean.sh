@@ -1,1 +1,1 @@
-rm -rf infinite_grid.cir process res.txt
+rm -rf grid_*.cir parse_ngspice_output res.txt *_current.svg
