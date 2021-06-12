@@ -43,6 +43,9 @@ out += """
 .control
 op
 print i(v1)
+
+* equivalent resistance:
+print -1.0/i(v1)
 * print all
 .endc"""
 

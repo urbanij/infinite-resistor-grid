@@ -1,15 +1,17 @@
 import os
 
-try:
-    os.remove("res.txt")
-except FileNotFoundError:
-    pass
 
 num_rows = [i*2 for i in range(1, 21)] + [60, 170]
 
-for i in num_rows:
-    os.system(f"python infinite_grid.py {i} | ngspice | ./parse_ngspice_output >> res.txt")
 
+if 1:
+    try:
+        os.remove("res.txt")
+    except FileNotFoundError:
+        pass
+
+    for i in num_rows:
+        os.system(f"python infinite_grid.py {i} | ngspice | ./parse_ngspice_output >> res.txt")
 
 
 
@@ -37,3 +39,7 @@ plot(num_total_resistors,
 plot(num_total_resistors, 
     -1.0/current, 
     label="# resistors vs resistance")
+
+plot(num_rows, 
+    -1.0/current, 
+    label="grid size vs resistance")
