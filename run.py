@@ -28,18 +28,20 @@ def plot(x, y, label):
     plt.plot(x, y, label=label)
     plt.plot(x, y, "x")
     plt.legend()
+    plt.xlabel(label.split('vs')[1])
+    plt.ylabel(label.split('vs')[0])
     plt.grid()
     plt.savefig(f"{label.replace(' ', '_')}.svg", format='svg')
 
 
 plot(num_total_resistors, 
     -current, 
-    label="# resistors vs current")
+    label="current vs # resistors")
 
 plot(num_total_resistors, 
     -1.0/current, 
-    label="# resistors vs resistance")
+    label="resistance vs # resistors")
 
 plot(num_rows, 
     -1.0/current, 
-    label="grid size vs resistance")
+    label="resistance vs grid size")

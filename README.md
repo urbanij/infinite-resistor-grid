@@ -31,7 +31,7 @@ which, after processing a netlist of 79999 resistors, gives a `i(v1) = -1.29315e
 `0.77330549433 Ω`.
 
 
-![](https://github.com/urbanij/infinite-resistor-grid/blob/main/grid_size_vs_resistance.svg?raw=true)
+![](https://github.com/urbanij/infinite-resistor-grid/blob/main/resistance_vs_grid_size.svg?raw=true)
 
 
 <!-- 
