@@ -21,14 +21,14 @@ python run.py
 ```
 If everything was a success you should have two `.svg` plots in your current directory.
 
-If you want to get straight to a single figure you can just run this instead, passing a moderately big even number like 170
+If you want to get straight to a single figure you can just run this instead, passing a moderately big even number like 200
 
 ```bash
-python infinite_grid.py 170 | ngspice
+python infinite_grid.py 200 | ngspice
 ``` 
 
-which, after processing a netlist of 57799 resistors, gives a `i(v1) = -1.29310e+00` output, meaning an equivalent resistance of 
-`0.77333539556 Ω`.
+which, after processing a netlist of 79999 resistors, gives a `i(v1) = -1.29315e+00` output, meaning an equivalent resistance of 
+`0.77330549433 Ω`.
 
 
 ![](https://github.com/urbanij/infinite-resistor-grid/blob/main/#_resistors_vs_resistance.svg?raw=true)
