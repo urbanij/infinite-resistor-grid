@@ -6,25 +6,40 @@
 
 ## How to:
 
-Install [ngspice](http://ngspice.sourceforge.net/) or any other [SPICE](https://en.wikipedia.org/wiki/List_of_free_electronics_circuit_simulators) simulator for that matter, e.g.
-```
+Install a CLI [SPICE](https://en.wikipedia.org/wiki/List_of_free_electronics_circuit_simulators) simulator such as [ngspice](http://ngspice.sourceforge.net/) or [MacSpice](https://www.macspice.com/) (which also happens to run twice as fast):
+
+```bash
 brew install ngspice
 ```
-then compile this little script in [Rust](https://www.rust-lang.org/tools/install) that _parses_ ngspice outputs
+or
+```bash
+brew install --cask macspice
+```
+
+then compile this [Rust](https://www.rust-lang.org/tools/install) script that _parses_ spice outputs
+
 ```bash
 rustc parse_ngspice_output.rs
 ```
 
-then run it all with this python script which takes ~40 seconds or so with the current configuration
+then run this python script (~40 seconds with the current configuration) to get some results and generate the plots.
 ```bash
 python run.py
 ```
-If everything was a success you should have two `.svg` plots in your current directory.
+If everything was a success you should have some `.svg` plots in your current directory.
+
 
 If you want to get straight to a single figure you can just run this instead, passing a moderately big even number like 200
 
 ```bash
 python infinite_grid.py 200 | ngspice
+```
+
+or 
+
+```bash
+ln -s /Applications/MacSpice.app/Contents/MacOS/MacSpice /usr/local/bin
+python infinite_grid.py 200 | MacSpice
 ``` 
 
 which, after processing a netlist of 79999 resistors, gives a `i(v1) = -1.29315e+00` output, meaning an equivalent resistance of 
@@ -33,29 +48,5 @@ which, after processing a netlist of 79999 resistors, gives a `i(v1) = -1.29315e
 
 ![](https://github.com/urbanij/infinite-resistor-grid/blob/main/resistance_vs_grid_size.svg?raw=true)
 
-
-<!-- 
-### Example generated netlist
-```spice
-* Infinite grid of resistors* Grid size = 2x3; # resistors = 7
-
-* Horizontal resistors
-R0 6 1 1
-R1 1 0 1
-* ---
-R2 3 4 1
-R3 4 5 1
-* Vertical resistors
-* ---
-R4 6 3 1
-R5 1 4 1
-R6 0 5 1
-
-V1 3 0 dc 1V
-
-.control
-op
-print i(v1)
-* print all
-.endc
-``` -->
+---
+btw [the mathematical result gives 4/π - 1/2](https://www.mathpages.com/home/kmath668/kmath668.htm).
