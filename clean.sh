@@ -1,1 +1,1 @@
-rm -rf grid_*.cir parse_ngspice_output res.txt *_current.svg
+rm -rf grid_*.cir parse_ngspice_output res.txt *.svg

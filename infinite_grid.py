@@ -8,7 +8,7 @@ except TypeError:
     raise("Give me an even number")
 
 out  = f"* Infinite grid of resistors"
-out += f"* Grid size = {N}x{M}; # resistors = { (N-1) * M + (M-1) * N }\n\n"
+out += f"* Grid size = {N}x{M}; # resistors = { (N-1) * M + (M-1) * N }; # nodes = {N*M}\n\n"
 
 resistor_count = 1
 
@@ -50,9 +50,12 @@ print -1.0/i(v1)
 .endc"""
 
 
-# since in SPICE 0 is ground we need to do a trick:
-out = out.replace(' 0 ', f" {N*M} ")
-out = out.replace(f" {V_neg} ", ' 0 ')
+# since in SPICE 0 is ground we need to swap 2 node values.
+# Node called 0 will be called V_neg at the end and vice versa.
+TMP_NODE_VAL = f" TMP_NODE "
+out = out.replace(' 0 ', TMP_NODE_VAL) \
+         .replace(f" {V_neg} ", ' 0 ') \
+         .replace(TMP_NODE_VAL, f" {V_neg} ")
 
 
 assert resistor_count - 1 == ( (N-1)*M + (M-1)*N )
